@@ -1,5 +1,5 @@
-FROM alpine:3.5
-RUN apk add --update python py-pip
-COPY requirements.txt /src/requirements.txt
-RUN pip install -r /src/requirements.txt
 CMD python manage.py runserver
+FROM python:3
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+CMD [ "python", "./manage.py runserver" ]
